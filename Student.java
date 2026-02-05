@@ -11,4 +11,6 @@ public class Student implements Serializable {
     private String rollNumber;
     private String grade;
     private int age;
+    private String email;
+    private String phoneNumber;
 }
