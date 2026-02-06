@@ -13,4 +13,8 @@ public class Student implements Serializable {
     private int age;
     private String email;
     private String phoneNumber;
+    
+    // Default constructor
+    public Student() {
+    }
 }
