@@ -17,4 +17,14 @@ public class Student implements Serializable {
     // Default constructor
     public Student() {
     }
+    
+    // Parameterized constructor
+    public Student(String name, String rollNumber, String grade, int age, String email, String phoneNumber) {
+        this.name = name;
+        this.rollNumber = rollNumber;
+        this.grade = grade;
+        this.age = age;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
 }
