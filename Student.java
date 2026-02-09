@@ -27,4 +27,21 @@ public class Student implements Serializable {
         this.email = email;
         this.phoneNumber = phoneNumber;
     }
+    
+    // Getters and Setters
+    public String getName() {
+        return name;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    public String getRollNumber() {
+        return rollNumber;
+    }
+    
+    public void setRollNumber(String rollNumber) {
+        this.rollNumber = rollNumber;
+    }
 }
