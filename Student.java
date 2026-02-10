@@ -44,4 +44,20 @@ public class Student implements Serializable {
     public void setRollNumber(String rollNumber) {
         this.rollNumber = rollNumber;
     }
+    
+    public String getGrade() {
+        return grade;
+    }
+    
+    public void setGrade(String grade) {
+        this.grade = grade;
+    }
+    
+    public int getAge() {
+        return age;
+    }
+    
+    public void setAge(int age) {
+        this.age = age;
+    }
 }
