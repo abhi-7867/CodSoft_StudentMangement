@@ -76,4 +76,18 @@ public class Student implements Serializable {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+    
+    @Override
+    public String toString() {
+        return String.format(
+            "Roll Number: %s\n" +
+            "Name: %s\n" +
+            "Grade: %s\n" +
+            "Age: %d\n" +
+            "Email: %s\n" +
+            "Phone: %s\n" +
+            "----------------------------------------",
+            rollNumber, name, grade, age, email, phoneNumber
+        );
+    }
 }
