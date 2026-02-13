@@ -90,4 +90,18 @@ public class Student implements Serializable {
             rollNumber, name, grade, age, email, phoneNumber
         );
     }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Student student = (Student) obj;
+        return rollNumber != null && rollNumber.equals(student.rollNumber);
+    }
+    
+    @Override
+    public int hashCode() {
+        return rollNumber != null ? rollNumber.hashCode() : 0;
+    }
 }
+
