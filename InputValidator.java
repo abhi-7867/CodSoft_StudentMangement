@@ -16,4 +16,18 @@ public class InputValidator {
     
     private static final Pattern emailPattern = Pattern.compile(EMAIL_PATTERN);
     private static final Pattern phonePattern = Pattern.compile(PHONE_PATTERN);
+    
+    /**
+     * Validate that a string is not null or empty.
+     * @param input The string to validate
+     * @param fieldName The name of the field for error messages
+     * @return true if valid, false otherwise
+     */
+    public static boolean validateNotEmpty(String input, String fieldName) {
+        if (input == null || input.trim().isEmpty()) {
+            System.out.println("Error: " + fieldName + " cannot be empty!");
+            return false;
+        }
+        return true;
+    }
 }
