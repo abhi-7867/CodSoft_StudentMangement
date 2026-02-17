@@ -30,4 +30,21 @@ public class InputValidator {
         }
         return true;
     }
+    
+    /**
+     * Validate roll number format.
+     * @param rollNumber The roll number to validate
+     * @return true if valid, false otherwise
+     */
+    public static boolean validateRollNumber(String rollNumber) {
+        if (!validateNotEmpty(rollNumber, "Roll Number")) {
+            return false;
+        }
+        if (rollNumber.trim().length() < 3) {
+            System.out.println("Error: Roll Number must be at least 3 characters long!");
+            return false;
+        }
+        return true;
+    }
+    
 }
