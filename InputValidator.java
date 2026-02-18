@@ -47,4 +47,25 @@ public class InputValidator {
         return true;
     }
     
+    /**
+     * Validate name format.
+     * @param name The name to validate
+     * @return true if valid, false otherwise
+     */
+    public static boolean validateName(String name) {
+        if (!validateNotEmpty(name, "Name")) {
+            return false;
+        }
+        if (name.trim().length() < 2) {
+            System.out.println("Error: Name must be at least 2 characters long!");
+            return false;
+        }
+        // Check if name contains only letters and spaces
+        if (!name.matches("^[a-zA-Z\\s]+$")) {
+            System.out.println("Error: Name can only contain letters and spaces!");
+            return false;
+        }
+        return true;
+    }
+    
 }
