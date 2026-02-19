@@ -68,4 +68,22 @@ public class InputValidator {
         return true;
     }
     
+    /**
+     * Validate grade format.
+     * @param grade The grade to validate
+     * @return true if valid, false otherwise
+     */
+    public static boolean validateGrade(String grade) {
+        if (!validateNotEmpty(grade, "Grade")) {
+            return false;
+        }
+        // Grade should be alphanumeric (e.g., "A", "B+", "10th", "12-A")
+        if (!grade.matches("^[a-zA-Z0-9+\\-]+$")) {
+            System.out.println("Error: Invalid grade format!");
+            return false;
+        }
+        return true;
+    }
+    
+    /**
 }
