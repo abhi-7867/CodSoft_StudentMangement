@@ -86,4 +86,16 @@ public class InputValidator {
     }
     
     /**
+     * Validate age.
+     * @param age The age to validate
+     * @return true if valid, false otherwise
+     */
+    public static boolean validateAge(int age) {
+        if (age < 5 || age > 120) {
+            System.out.println("Error: Age must be between 5 and 120!");
+            return false;
+        }
+        return true;
+    }
+    
 }
