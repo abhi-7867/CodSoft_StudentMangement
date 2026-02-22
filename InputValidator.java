@@ -98,4 +98,20 @@ public class InputValidator {
         return true;
     }
     
+    /**
+     * Validate email format.
+     * @param email The email to validate
+     * @return true if valid, false otherwise
+     */
+    public static boolean validateEmail(String email) {
+        if (!validateNotEmpty(email, "Email")) {
+            return false;
+        }
+        if (!emailPattern.matcher(email).matches()) {
+            System.out.println("Error: Invalid email format!");
+            return false;
+        }
+        return true;
+    }
+    
 }
