@@ -114,4 +114,22 @@ public class InputValidator {
         return true;
     }
     
+    /**
+     * Validate phone number format.
+     * @param phoneNumber The phone number to validate
+     * @return true if valid, false otherwise
+     */
+    public static boolean validatePhoneNumber(String phoneNumber) {
+        if (!validateNotEmpty(phoneNumber, "Phone Number")) {
+            return false;
+        }
+        // Remove spaces and hyphens for validation
+        String cleaned = phoneNumber.replaceAll("[\\s\\-]", "");
+        if (!phonePattern.matcher(cleaned).matches()) {
+            System.out.println("Error: Phone number must be exactly 10 digits!");
+            return false;
+        }
+        return true;
+    }
+    
 }
