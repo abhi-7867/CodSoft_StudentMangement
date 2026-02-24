@@ -132,4 +132,22 @@ public class InputValidator {
         return true;
     }
     
+    /**
+     * Parse and validate age from string input.
+     * @param ageStr The age as a string
+     * @return The age as an integer, or -1 if invalid
+     */
+    public static int parseAge(String ageStr) {
+        try {
+            int age = Integer.parseInt(ageStr.trim());
+            if (validateAge(age)) {
+                return age;
+            }
+            return -1;
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Age must be a valid number!");
+            return -1;
+        }
+    }
 }
+
