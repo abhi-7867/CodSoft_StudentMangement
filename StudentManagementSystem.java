@@ -15,4 +15,16 @@ public class StudentManagementSystem {
     public StudentManagementSystem() {
         this.students = new ArrayList<>();
     }
+    
+    /**
+     * Search for a student by roll number.
+     * @param rollNumber The roll number to search for
+     * @return The student if found, null otherwise
+     */
+    public Student searchByRollNumber(String rollNumber) {
+        return students.stream()
+                .filter(s -> s.getRollNumber().equalsIgnoreCase(rollNumber))
+                .findFirst()
+                .orElse(null);
+    }
 }
