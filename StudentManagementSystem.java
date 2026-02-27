@@ -17,6 +17,25 @@ public class StudentManagementSystem {
     }
     
     /**
+     * Add a new student to the system.
+     * @param student The student to add
+     * @return true if student is added successfully, false if roll number already exists
+     */
+    public boolean addStudent(Student student) {
+        if (student == null) {
+            return false;
+        }
+        
+        // Check if student with same roll number already exists
+        if (searchByRollNumber(student.getRollNumber()) != null) {
+            return false;
+        }
+        
+        students.add(student);
+        return true;
+    }
+    
+    /**
      * Search for a student by roll number.
      * @param rollNumber The roll number to search for
      * @return The student if found, null otherwise
