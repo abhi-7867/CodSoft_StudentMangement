@@ -16,30 +16,31 @@ public class StudentManagementSystem {
         this.students = new ArrayList<>();
     }
     
-    /**
-     * Add a new student to the system.
-     * @param student The student to add
-     * @return true if student is added successfully, false if roll number already exists
-     */
     public boolean addStudent(Student student) {
         if (student == null) {
             return false;
         }
-        
-        // Check if student with same roll number already exists
         if (searchByRollNumber(student.getRollNumber()) != null) {
             return false;
         }
-        
         students.add(student);
         return true;
     }
     
     /**
-     * Search for a student by roll number.
-     * @param rollNumber The roll number to search for
-     * @return The student if found, null otherwise
+     * Remove a student from the system by roll number.
+     * @param rollNumber The roll number of the student to remove
+     * @return true if student is removed successfully, false if not found
      */
+    public boolean removeStudent(String rollNumber) {
+        Student student = searchByRollNumber(rollNumber);
+        if (student != null) {
+            students.remove(student);
+            return true;
+        }
+        return false;
+    }
+    
     public Student searchByRollNumber(String rollNumber) {
         return students.stream()
                 .filter(s -> s.getRollNumber().equalsIgnoreCase(rollNumber))
