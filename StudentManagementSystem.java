@@ -43,14 +43,20 @@ public class StudentManagementSystem {
                 .orElse(null);
     }
     
-    /**
-     * Search for students by name (partial match).
-     * @param name The name to search for
-     * @return List of students matching the name
-     */
     public List<Student> searchByName(String name) {
         return students.stream()
                 .filter(s -> s.getName().toLowerCase().contains(name.toLowerCase()))
+                .collect(Collectors.toList());
+    }
+    
+    /**
+     * Search for students by grade.
+     * @param grade The grade to search for
+     * @return List of students with the specified grade
+     */
+    public List<Student> searchByGrade(String grade) {
+        return students.stream()
+                .filter(s -> s.getGrade().equalsIgnoreCase(grade))
                 .collect(Collectors.toList());
     }
 }
