@@ -49,14 +49,25 @@ public class StudentManagementSystem {
                 .collect(Collectors.toList());
     }
     
-    /**
-     * Search for students by grade.
-     * @param grade The grade to search for
-     * @return List of students with the specified grade
-     */
     public List<Student> searchByGrade(String grade) {
         return students.stream()
                 .filter(s -> s.getGrade().equalsIgnoreCase(grade))
                 .collect(Collectors.toList());
+    }
+    
+    /**
+     * Display all students in the system.
+     * @return List of all students
+     */
+    public List<Student> getAllStudents() {
+        return new ArrayList<>(students);
+    }
+    
+    /**
+     * Get the total number of students in the system.
+     * @return The number of students
+     */
+    public int getStudentCount() {
+        return students.size();
     }
 }
