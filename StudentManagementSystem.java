@@ -55,19 +55,30 @@ public class StudentManagementSystem {
                 .collect(Collectors.toList());
     }
     
-    /**
-     * Display all students in the system.
-     * @return List of all students
-     */
     public List<Student> getAllStudents() {
         return new ArrayList<>(students);
     }
     
-    /**
-     * Get the total number of students in the system.
-     * @return The number of students
-     */
     public int getStudentCount() {
         return students.size();
+    }
+    
+    /**
+     * Update an existing student's information.
+     * @param rollNumber The roll number of the student to update
+     * @param updatedStudent The updated student information
+     * @return true if student is updated successfully, false if not found
+     */
+    public boolean updateStudent(String rollNumber, Student updatedStudent) {
+        Student existingStudent = searchByRollNumber(rollNumber);
+        if (existingStudent != null) {
+            existingStudent.setName(updatedStudent.getName());
+            existingStudent.setGrade(updatedStudent.getGrade());
+            existingStudent.setAge(updatedStudent.getAge());
+            existingStudent.setEmail(updatedStudent.getEmail());
+            existingStudent.setPhoneNumber(updatedStudent.getPhoneNumber());
+            return true;
+        }
+        return false;
     }
 }
