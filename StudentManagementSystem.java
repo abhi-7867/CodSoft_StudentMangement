@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
  */
 public class StudentManagementSystem {
     private List<Student> students;
+    private static final String DATA_FILE = "students.dat";
     
     // Constructor
     public StudentManagementSystem() {
@@ -63,12 +64,6 @@ public class StudentManagementSystem {
         return students.size();
     }
     
-    /**
-     * Update an existing student's information.
-     * @param rollNumber The roll number of the student to update
-     * @param updatedStudent The updated student information
-     * @return true if student is updated successfully, false if not found
-     */
     public boolean updateStudent(String rollNumber, Student updatedStudent) {
         Student existingStudent = searchByRollNumber(rollNumber);
         if (existingStudent != null) {
@@ -80,5 +75,17 @@ public class StudentManagementSystem {
             return true;
         }
         return false;
+    }
+    
+    /**
+     * Save all students to a file using serialization.
+     */
+    private void saveStudentsToFile() {
+        try (ObjectOutputStream oos = new ObjectOutputStream(
+                new FileOutputStream(DATA_FILE))) {
+            oos.writeObject(students);
+        } catch (IOException e) {
+            System.err.println("Error saving students to file: " + e.getMessage());
+        }
     }
 }
