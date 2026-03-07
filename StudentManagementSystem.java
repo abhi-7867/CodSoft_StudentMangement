@@ -15,6 +15,7 @@ public class StudentManagementSystem {
     // Constructor
     public StudentManagementSystem() {
         this.students = new ArrayList<>();
+        loadStudentsFromFile();
     }
     
     public boolean addStudent(Student student) {
@@ -77,15 +78,31 @@ public class StudentManagementSystem {
         return false;
     }
     
-    /**
-     * Save all students to a file using serialization.
-     */
     private void saveStudentsToFile() {
         try (ObjectOutputStream oos = new ObjectOutputStream(
                 new FileOutputStream(DATA_FILE))) {
             oos.writeObject(students);
         } catch (IOException e) {
             System.err.println("Error saving students to file: " + e.getMessage());
+        }
+    }
+    
+    /**
+     * Load all students from a file using deserialization.
+     */
+    @SuppressWarnings("unchecked")
+    private void loadStudentsFromFile() {
+        File file = new File(DATA_FILE);
+        if (!file.exists()) {
+            return;
+        }
+        
+        try (ObjectInputStream ois = new ObjectInputStream(
+                new FileInputStream(DATA_FILE))) {
+            students = (List<Student>) ois.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            System.err.println("Error loading students from file: " + e.getMessage());
+            students = new ArrayList<>();
         }
     }
 }
