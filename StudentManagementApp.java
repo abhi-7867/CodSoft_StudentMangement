@@ -20,6 +20,31 @@ public class StudentManagementApp {
     }
     
     public void run() {
-        System.out.println("Starting application...");
+        displayMainMenu();
+    }
+    
+    private void displayMainMenu() {
+        System.out.println("\n========== MAIN MENU ==========");
+        System.out.println("1. Add New Student");
+        System.out.println("2. Remove Student");
+        System.out.println("3. Search Student");
+        System.out.println("4. Update Student Information");
+        System.out.println("5. Display All Students");
+        System.out.println("6. Display Statistics");
+        System.out.println("7. Exit");
+        System.out.println("===============================");
+        System.out.print("Enter your choice: ");
+    }
+    
+    private int getMenuChoice() {
+        try {
+            String input = scanner.nextLine().trim();
+            if (input.isEmpty()) {
+                return -1;
+            }
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            return -1;
+        }
     }
 }
