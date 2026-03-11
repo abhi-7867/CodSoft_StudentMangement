@@ -19,8 +19,55 @@ public class StudentManagementApp {
         app.run();
     }
     
+    /**
+     * Main menu loop for the application.
+     */
     public void run() {
-        displayMainMenu();
+        boolean running = true;
+        
+        System.out.println("========================================");
+        System.out.println("   STUDENT MANAGEMENT SYSTEM");
+        System.out.println("========================================\n");
+        
+        while (running) {
+            displayMainMenu();
+            int choice = getMenuChoice();
+            
+            switch (choice) {
+                case 1:
+                    addStudent();
+                    break;
+                case 2:
+                    removeStudent();
+                    break;
+                case 3:
+                    searchStudent();
+                    break;
+                case 4:
+                    updateStudent();
+                    break;
+                case 5:
+                    displayAllStudents();
+                    break;
+                case 6:
+                    displayStatistics();
+                    break;
+                case 7:
+                    System.out.println("\nThank you for using Student Management System!");
+                    System.out.println("Goodbye!");
+                    running = false;
+                    break;
+                default:
+                    System.out.println("\nInvalid choice! Please try again.");
+            }
+            
+            if (running) {
+                System.out.println("\nPress Enter to continue...");
+                scanner.nextLine();
+            }
+        }
+        
+        scanner.close();
     }
     
     private void displayMainMenu() {
@@ -47,4 +94,11 @@ public class StudentManagementApp {
             return -1;
         }
     }
+    
+    private void addStudent() {}
+    private void removeStudent() {}
+    private void searchStudent() {}
+    private void updateStudent() {}
+    private void displayAllStudents() {}
+    private void displayStatistics() {}
 }
