@@ -70,6 +70,9 @@ public class StudentManagementApp {
         scanner.close();
     }
     
+    /**
+     * Display the main menu options.
+     */
     private void displayMainMenu() {
         System.out.println("\n========== MAIN MENU ==========");
         System.out.println("1. Add New Student");
@@ -83,6 +86,10 @@ public class StudentManagementApp {
         System.out.print("Enter your choice: ");
     }
     
+    /**
+     * Get and validate menu choice from user.
+     * @return The menu choice as an integer
+     */
     private int getMenuChoice() {
         try {
             String input = scanner.nextLine().trim();
@@ -95,7 +102,91 @@ public class StudentManagementApp {
         }
     }
     
-    private void addStudent() {}
+    /**
+     * Add a new student to the system.
+     */
+    private void addStudent() {
+        System.out.println("\n========== ADD NEW STUDENT ==========");
+        
+        // Roll Number
+        String rollNumber;
+        while (true) {
+            System.out.print("Enter Roll Number: ");
+            rollNumber = scanner.nextLine().trim();
+            if (InputValidator.validateRollNumber(rollNumber)) {
+                // Check if roll number already exists
+                if (sms.searchByRollNumber(rollNumber) != null) {
+                    System.out.println("Error: Student with this roll number already exists!");
+                    System.out.print("Do you want to try again? (y/n): ");
+                    if (!scanner.nextLine().trim().equalsIgnoreCase("y")) {
+                        return;
+                    }
+                } else {
+                    break;
+                }
+            }
+        }
+        
+        // Name
+        String name;
+        while (true) {
+            System.out.print("Enter Name: ");
+            name = scanner.nextLine().trim();
+            if (InputValidator.validateName(name)) {
+                break;
+            }
+        }
+        
+        // Grade
+        String grade;
+        while (true) {
+            System.out.print("Enter Grade: ");
+            grade = scanner.nextLine().trim();
+            if (InputValidator.validateGrade(grade)) {
+                break;
+            }
+        }
+        
+        // Age
+        int age;
+        while (true) {
+            System.out.print("Enter Age: ");
+            String ageStr = scanner.nextLine().trim();
+            age = InputValidator.parseAge(ageStr);
+            if (age != -1) {
+                break;
+            }
+        }
+        
+        // Email
+        String email;
+        while (true) {
+            System.out.print("Enter Email: ");
+            email = scanner.nextLine().trim();
+            if (InputValidator.validateEmail(email)) {
+                break;
+            }
+        }
+        
+        // Phone Number
+        String phoneNumber;
+        while (true) {
+            System.out.print("Enter Phone Number (10 digits): ");
+            phoneNumber = scanner.nextLine().trim();
+            if (InputValidator.validatePhoneNumber(phoneNumber)) {
+                break;
+            }
+        }
+        
+        // Create and add student
+        Student student = new Student(name, rollNumber, grade, age, email, phoneNumber);
+        if (sms.addStudent(student)) {
+            System.out.println("\n✓ Student added successfully!");
+        } else {
+            System.out.println("\n✗ Failed to add student!");
+        }
+    }
+    
     private void removeStudent() {}
     private void searchStudent() {}
     private void updateStudent() {}
