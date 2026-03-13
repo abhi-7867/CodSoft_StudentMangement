@@ -187,7 +187,41 @@ public class StudentManagementApp {
         }
     }
     
-    private void removeStudent() {}
+    /**
+     * Remove a student from the system.
+     */
+    private void removeStudent() {
+        System.out.println("\n========== REMOVE STUDENT ==========");
+        System.out.print("Enter Roll Number to remove: ");
+        String rollNumber = scanner.nextLine().trim();
+        
+        if (rollNumber.isEmpty()) {
+            System.out.println("Error: Roll number cannot be empty!");
+            return;
+        }
+        
+        Student student = sms.searchByRollNumber(rollNumber);
+        if (student == null) {
+            System.out.println("\n✗ Student not found!");
+            return;
+        }
+        
+        System.out.println("\nStudent found:");
+        System.out.println(student);
+        System.out.print("\nAre you sure you want to remove this student? (y/n): ");
+        String confirmation = scanner.nextLine().trim();
+        
+        if (confirmation.equalsIgnoreCase("y")) {
+            if (sms.removeStudent(rollNumber)) {
+                System.out.println("\n✓ Student removed successfully!");
+            } else {
+                System.out.println("\n✗ Failed to remove student!");
+            }
+        } else {
+            System.out.println("\nOperation cancelled.");
+        }
+    }
+    
     private void searchStudent() {}
     private void updateStudent() {}
     private void displayAllStudents() {}
