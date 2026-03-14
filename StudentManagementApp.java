@@ -222,7 +222,42 @@ public class StudentManagementApp {
         }
     }
     
-    private void searchStudent() {}
+    /**
+     * Search for a student in the system.
+     */
+    private void searchStudent() {
+        System.out.println("\n========== SEARCH STUDENT ==========");
+        System.out.println("1. Search by Roll Number");
+        System.out.println("2. Search by Name");
+        System.out.println("3. Search by Grade");
+        System.out.print("Enter your choice: ");
+        
+        int choice = getMenuChoice();
+        List<Student> results;
+        
+        switch (choice) {
+            case 1:
+                System.out.print("Enter Roll Number: ");
+                String rollNumber = scanner.nextLine().trim();
+                if (rollNumber.isEmpty()) {
+                    System.out.println("Error: Roll number cannot be empty!");
+                    return;
+                }
+                Student student = sms.searchByRollNumber(rollNumber);
+                if (student != null) {
+                    System.out.println("\n✓ Student found:");
+                    System.out.println(student);
+                } else {
+                    System.out.println("\n✗ Student not found!");
+                }
+                return;
+                
+            case 2:
+            default:
+                System.out.println("Invalid choice!");
+                return;
+        }
+    }
     private void updateStudent() {}
     private void displayAllStudents() {}
     private void displayStatistics() {}
