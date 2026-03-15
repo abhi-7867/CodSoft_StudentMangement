@@ -253,11 +253,41 @@ public class StudentManagementApp {
                 return;
                 
             case 2:
+                System.out.print("Enter Name: ");
+                String name = scanner.nextLine().trim();
+                if (name.isEmpty()) {
+                    System.out.println("Error: Name cannot be empty!");
+                    return;
+                }
+                results = sms.searchByName(name);
+                break;
+                
+            case 3:
+                System.out.print("Enter Grade: ");
+                String grade = scanner.nextLine().trim();
+                if (grade.isEmpty()) {
+                    System.out.println("Error: Grade cannot be empty!");
+                    return;
+                }
+                results = sms.searchByGrade(grade);
+                break;
+                
             default:
                 System.out.println("Invalid choice!");
                 return;
         }
+        
+        if (results.isEmpty()) {
+            System.out.println("\n✗ No students found!");
+        } else {
+            System.out.println("\n✓ Found " + results.size() + " student(s):\n");
+            for (Student s : results) {
+                System.out.println(s);
+                System.out.println();
+            }
+        }
     }
+    
     private void updateStudent() {}
     private void displayAllStudents() {}
     private void displayStatistics() {}
