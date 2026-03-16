@@ -288,7 +288,66 @@ public class StudentManagementApp {
         }
     }
     
-    private void updateStudent() {}
+    /**
+     * Update an existing student's information.
+     */
+    private void updateStudent() {
+        System.out.println("\n========== UPDATE STUDENT ==========");
+        System.out.print("Enter Roll Number to update: ");
+        String rollNumber = scanner.nextLine().trim();
+        
+        if (rollNumber.isEmpty()) {
+            System.out.println("Error: Roll number cannot be empty!");
+            return;
+        }
+        
+        Student existingStudent = sms.searchByRollNumber(rollNumber);
+        if (existingStudent == null) {
+            System.out.println("\n✗ Student not found!");
+            return;
+        }
+        
+        System.out.println("\nCurrent student information:");
+        System.out.println(existingStudent);
+        System.out.println("\nEnter new information (press Enter to keep current value):");
+        
+        // Name
+        System.out.print("Enter Name [" + existingStudent.getName() + "]: ");
+        String name = scanner.nextLine().trim();
+        if (name.isEmpty()) {
+            name = existingStudent.getName();
+        } else {
+            while (!InputValidator.validateName(name)) {
+                System.out.print("Enter Name [" + existingStudent.getName() + "]: ");
+                name = scanner.nextLine().trim();
+                if (name.isEmpty()) {
+                    name = existingStudent.getName();
+                    break;
+                }
+            }
+        }
+        
+        // Grade
+        System.out.print("Enter Grade [" + existingStudent.getGrade() + "]: ");
+        String grade = scanner.nextLine().trim();
+        if (grade.isEmpty()) {
+            grade = existingStudent.getGrade();
+        } else {
+            while (!InputValidator.validateGrade(grade)) {
+                System.out.print("Enter Grade [" + existingStudent.getGrade() + "]: ");
+                grade = scanner.nextLine().trim();
+                if (grade.isEmpty()) {
+                    grade = existingStudent.getGrade();
+                    break;
+                }
+            }
+        }
+        
+        // Age
+        // Create updated student
+        Student updatedStudent = new Student(name, rollNumber, grade, existingStudent.getAge(), existingStudent.getEmail(), existingStudent.getPhoneNumber());
+        sms.updateStudent(rollNumber, updatedStudent);
+    }
     private void displayAllStudents() {}
     private void displayStatistics() {}
 }
