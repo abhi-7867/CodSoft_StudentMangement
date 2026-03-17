@@ -344,10 +344,59 @@ public class StudentManagementApp {
         }
         
         // Age
+        System.out.print("Enter Age [" + existingStudent.getAge() + "]: ");
+        String ageStr = scanner.nextLine().trim();
+        int age = existingStudent.getAge();
+        if (!ageStr.isEmpty()) {
+            int newAge = InputValidator.parseAge(ageStr);
+            if (newAge != -1) {
+                age = newAge;
+            } else {
+                System.out.println("Keeping current age: " + age);
+            }
+        }
+        
+        // Email
+        System.out.print("Enter Email [" + existingStudent.getEmail() + "]: ");
+        String email = scanner.nextLine().trim();
+        if (email.isEmpty()) {
+            email = existingStudent.getEmail();
+        } else {
+            while (!InputValidator.validateEmail(email)) {
+                System.out.print("Enter Email [" + existingStudent.getEmail() + "]: ");
+                email = scanner.nextLine().trim();
+                if (email.isEmpty()) {
+                    email = existingStudent.getEmail();
+                    break;
+                }
+            }
+        }
+        
+        // Phone Number
+        System.out.print("Enter Phone Number [" + existingStudent.getPhoneNumber() + "]: ");
+        String phoneNumber = scanner.nextLine().trim();
+        if (phoneNumber.isEmpty()) {
+            phoneNumber = existingStudent.getPhoneNumber();
+        } else {
+            while (!InputValidator.validatePhoneNumber(phoneNumber)) {
+                System.out.print("Enter Phone Number [" + existingStudent.getPhoneNumber() + "]: ");
+                phoneNumber = scanner.nextLine().trim();
+                if (phoneNumber.isEmpty()) {
+                    phoneNumber = existingStudent.getPhoneNumber();
+                    break;
+                }
+            }
+        }
+        
         // Create updated student
-        Student updatedStudent = new Student(name, rollNumber, grade, existingStudent.getAge(), existingStudent.getEmail(), existingStudent.getPhoneNumber());
-        sms.updateStudent(rollNumber, updatedStudent);
+        Student updatedStudent = new Student(name, rollNumber, grade, age, email, phoneNumber);
+        if (sms.updateStudent(rollNumber, updatedStudent)) {
+            System.out.println("\n✓ Student information updated successfully!");
+        } else {
+            System.out.println("\n✗ Failed to update student information!");
+        }
     }
+    
     private void displayAllStudents() {}
     private void displayStatistics() {}
 }
