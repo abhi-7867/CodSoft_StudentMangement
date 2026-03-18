@@ -397,6 +397,23 @@ public class StudentManagementApp {
         }
     }
     
-    private void displayAllStudents() {}
+    /**
+     * Display all students in the system.
+     */
+    private void displayAllStudents() {
+        System.out.println("\n========== ALL STUDENTS ==========");
+        List<Student> students = sms.getAllStudents();
+        
+        if (students.isEmpty()) {
+            System.out.println("No students in the system.");
+        } else {
+            System.out.println("Total Students: " + students.size() + "\n");
+            for (Student student : students) {
+                System.out.println(student);
+                System.out.println();
+            }
+        }
+    }
+    
     private void displayStatistics() {}
 }
