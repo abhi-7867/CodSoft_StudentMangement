@@ -415,5 +415,25 @@ public class StudentManagementApp {
         }
     }
     
-    private void displayStatistics() {}
+    /**
+     * Display statistics about the system.
+     */
+    private void displayStatistics() {
+        System.out.println("\n========== STATISTICS ==========");
+        System.out.println("Total Students: " + sms.getStudentCount());
+        
+        List<Student> students = sms.getAllStudents();
+        if (students.isEmpty()) {
+            System.out.println("No students in the system.");
+            return;
+        }
+        
+        // Calculate average age
+        double avgAge = students.stream()
+                .mapToInt(Student::getAge)
+                .average()
+                .orElse(0.0);
+        System.out.println("Average Age: " + String.format("%.2f", avgAge));
+        
+    }
 }
