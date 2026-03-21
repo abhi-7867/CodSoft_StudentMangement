@@ -435,5 +435,14 @@ public class StudentManagementApp {
                 .orElse(0.0);
         System.out.println("Average Age: " + String.format("%.2f", avgAge));
         
+        // Count by grade
+        System.out.println("\nStudents by Grade:");
+        students.stream()
+                .collect(java.util.stream.Collectors.groupingBy(
+                        Student::getGrade,
+                        java.util.stream.Collectors.counting()))
+                .forEach((grade, count) -> 
+                    System.out.println("  " + grade + ": " + count + " student(s)"));
     }
 }
+
