@@ -40,3 +40,21 @@ A comprehensive Java-based console application for managing student information 
 - **Age**: Student's age (5-120)
 - **Email**: Valid email address
 - **Phone Number**: 10-digit phone number
+
+## How to Compile and Run
+
+### Prerequisites
+- Java JDK 8 or higher
+- Any Java IDE or command line
+
+### Compilation
+
+```bash
+javac *.java
+```
+
+### Execution
+
+```bash
+java StudentManagementApp
+```
