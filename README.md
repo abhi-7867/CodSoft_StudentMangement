@@ -58,3 +58,13 @@ javac *.java
 ```bash
 java StudentManagementApp
 ```
+
+## Menu Options
+
+1. **Add New Student**: Add a new student with all required information
+2. **Remove Student**: Remove a student by roll number (with confirmation)
+3. **Search Student**: Search by roll number, name, or grade
+4. **Update Student Information**: Modify existing student details
+5. **Display All Students**: Show all students in the system
+6. **Display Statistics**: Show total count, average age, and grade distribution
+7. **Exit**: Close the application
