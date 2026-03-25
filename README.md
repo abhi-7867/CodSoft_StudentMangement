@@ -68,3 +68,20 @@ java StudentManagementApp
 5. **Display All Students**: Show all students in the system
 6. **Display Statistics**: Show total count, average age, and grade distribution
 7. **Exit**: Close the application
+
+## Data Storage
+
+- Data is automatically saved to `students.dat` file
+- Data persists between application sessions
+- Uses Java serialization for storage
+
+## Input Validation Rules
+
+- **Roll Number**: Minimum 3 characters, cannot be empty
+- **Name**: Minimum 2 characters, letters and spaces only
+- **Grade**: Alphanumeric with + and - allowed
+- **Age**: Integer between 5 and 120
+- **Email**: Standard email format validation
+- **Phone Number**: Exactly 10 digits
+
+## Project Structure
