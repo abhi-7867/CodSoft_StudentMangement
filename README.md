@@ -85,3 +85,13 @@ java StudentManagementApp
 - **Phone Number**: Exactly 10 digits
 
 ## Project Structure
+
+```
+Student Management System/
+├── Student.java                 # Student entity class
+├── StudentManagementSystem.java # Management system with CRUD operations
+├── InputValidator.java         # Input validation utilities
+├── StudentManagementApp.java   # Main application with UI
+├── students.dat                # Data file (auto-generated)
+└── README.md                   # This file
+```
