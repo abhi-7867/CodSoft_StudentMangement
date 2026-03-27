@@ -95,3 +95,14 @@ Student Management System/
 ├── students.dat                # Data file (auto-generated)
 └── README.md                   # This file
 ```
+
+## Example Usage
+
+1. Start the application
+2. Select option 1 to add a new student
+3. Enter all required information (with validation)
+4. Student is saved automatically
+5. Use option 3 to search for the student
+6. Use option 4 to update information
+7. Use option 5 to view all students
+8. Exit with option 7
