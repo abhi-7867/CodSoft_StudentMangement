@@ -106,3 +106,12 @@ Student Management System/
 6. Use option 4 to update information
 7. Use option 5 to view all students
 8. Exit with option 7
+
+## Notes
+
+- Roll numbers must be unique
+- All data is validated before saving
+- Confirmation is required for deletion
+- File is automatically created if it doesn't exist
+- Application handles file errors gracefully
+
